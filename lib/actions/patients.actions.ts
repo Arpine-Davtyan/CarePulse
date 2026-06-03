@@ -28,16 +28,16 @@ export const createUser = async (user: CreateUserParams) => {
 }
 
 export const getUser = async (userId: string) => {
-  try {
-    const user = await users.get(userId);
+    try {
+        const user = await users.get(userId);
 
-    return parseStringify(user);
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the user details:",
-      error
-    );
-  }
+        return parseStringify(user);
+    } catch (error) {
+        console.error(
+            "An error occurred while retrieving the user details:",
+            error
+        );
+    }
 };
 
 export const registerPatient = async ({ identificationDocument, ...patient } : RegisterUserParams) => {
@@ -69,3 +69,20 @@ export const registerPatient = async ({ identificationDocument, ...patient } : R
         console.log(error);
     }
 }
+
+export const getPatient = async (userId: string) => {
+    try {
+        const patients = await databases.listDocuments(
+            DATABASE_ID!,
+            PATIENT_COLLECTION_ID!,
+            [Query.equal('userId', userId)]
+        );
+
+        return parseStringify(patients.documents[0]);
+    } catch (error) {
+        console.error(
+            "An error occurred while retrieving the user details:",
+            error
+        );
+    }
+};
