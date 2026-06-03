@@ -7,10 +7,8 @@ export default async function NewAppointmen({
 }: {
     params: Promise<{ userId: string }>;
 }) {
+    
     const { userId } = await params;
-
-    console.log("USER ID:", userId);
-
 
     const patient = await getPatient(userId);
     return (
