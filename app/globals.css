@@ -21,6 +21,18 @@
   --color-dark-700: #ABB8C4;
 }
 
+.bg-appointments {
+  background-image: url("/assets/images/appointments-bg.png");
+}
+
+.bg-pending {
+  background-image: url("/assets/images/pending-bg.png");
+}
+
+.bg-cancelled {
+  background-image: url("/assets/images/cancelled-bg.png");
+}
+
 /* ================= REMOVE SCROLLBAR */
 @layer utilities {
   .remove-scrollbar {
