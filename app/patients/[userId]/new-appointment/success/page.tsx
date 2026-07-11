@@ -9,11 +9,12 @@ const Success = async function Page({
     params,
     searchParams,
 }: {
-    params: { userId: string };
-    searchParams: { appointmentId?: string };
+    params: Promise<{ userId: string }>;
+    searchParams: Promise<{ appointmentId?: string }>;
 }) {
-    const userId = params.userId;
-    const appointmentId = (searchParams?.appointmentId as string) || '';
+    const { userId } = await params;
+    const { appointmentId = '' } = await searchParams;
+
     const appointment = await getAppointment(appointmentId);
 
     const doctor = Doctors.find((doc) => doc.name === appointment?.primaryPhysician);

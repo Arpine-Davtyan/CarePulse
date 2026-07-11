@@ -11,12 +11,6 @@ import AppointmentModal from "../AppointmentModal"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Payment = {
-    id: string
-    amount: number
-    status: "pending" | "processing" | "success" | "failed"
-    email: string
-}
 
 export const columns: ColumnDef<Appointment>[] = [
     {
@@ -78,7 +72,7 @@ export const columns: ColumnDef<Appointment>[] = [
                         type="schedule" 
                         patientId={data.patient.$id}
                         userId={data.userId}
-                        appointmentId={data}
+                        appointment={data}
                         // title="Schedule Appointment"
                         // description="Please confirm the following details to scheduled"
                     />
@@ -86,7 +80,7 @@ export const columns: ColumnDef<Appointment>[] = [
                         type="cancel" 
                         patientId={data.patient.$id}
                         userId={data.userId}
-                        appointmentId={data}
+                        appointment={data}
                         // title="Cancel Appointment"
                         // description="Are you sure you eant to cancel this appointment?"
                     />
